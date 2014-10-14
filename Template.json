@@ -1,5 +1,5 @@
 {
-  "Name": "Brewmaster.WebFarm",
+  "Name": "WebFarm",
   "Description": "Creates a N (2 by default) server IIS WebFarm with WebDeploy publishing enabled.",
   "Version": "0.2.0",
   "Parameters": [
