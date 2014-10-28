@@ -246,7 +246,7 @@
 		{
           "Credential": "vmadmin",
           "GetScript": "return @{ Installed = Get-WindowsFeature Web-Server }\r\n",
-          "SetScript": "Install-WindowsFeature Web-Server -LogPath \"$env:BrewmasterDir\\Logs\\Install-IIS.log\"",
+          "SetScript": "Install-WindowsFeature Web-Server -LogPath \"$env:BrewmasterDir\\Logs\\Install-IIS.log\"\r\nInstall-WindowsFeature Web-Mgmt-Service -LogPath \"$env:BrewmasterDir\\Logs\\Install-WMSvc.log\"",
           "TestScript": null,
           "Type": "Script",
           "ImportModule": null,
