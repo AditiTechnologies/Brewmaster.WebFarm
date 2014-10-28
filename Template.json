@@ -271,7 +271,7 @@
           },
           "Nodes": [],
           "Requires": [
-            "[WindowsFeature]InstallIIS",
+            "[Script]InstallIIS",
             "[WindowsFeature]InstallASPNET45"
           ],
           "Description": null
