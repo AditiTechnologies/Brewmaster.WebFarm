@@ -104,7 +104,7 @@
             "AvailabilitySet": "webfarm-avset",
             "OsVirtualDisk": {
               "OsType": "Windows",
-              "OsImageName": "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-R2-201407*"
+              "OsImageName": "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-R2-*"
             },
             "WindowsConfigSet": {
               "LocalAdminCredentialId": "vmadmin",
@@ -124,7 +124,7 @@
             "AvailabilitySet": "webfarm-avset",
             "OsVirtualDisk": {
               "OsType": "Windows",
-              "OsImageName": "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-R2-201407*"
+              "OsImageName": "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-R2-*"
             },
             "WindowsConfigSet": {
               "LocalAdminCredentialId": "vmadmin",
@@ -297,7 +297,7 @@
         {
           "Credential": "vmadmin",
           "GetScript": "return @{ Installed = Test-Path -LiteralPath \"$env:ProgramFiles\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe\" -PathType Leaf }\r\n",
-          "SetScript": "$webpicmdexe = \"$env:ProgramFiles\\Microsoft\\Web Platform Installer\\WebPICmd.exe\"\r\n$webpicmdargs = @(\"/Install\", \"/Products:WDeployPS\", \"/AcceptEula\", \"/SuppressReboot\", \"/Log:$env:BrewmasterDir\\Logs\\WebDeploy-Install.log\")\r\nWrite-Verbose \"Installing WebDeploy V3 ($webpicmdexe $webpicmdargs)\" -Verbose\r\nStart-Process -FilePath $webpicmdexe -ArgumentList $webpicmdargs -Wait\r\nif (!(Test-Path -LiteralPath \"$env:ProgramFiles\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe\" -PathType Leaf))\r\n{\r\n    Throw \"$env:ProgramFiles\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe was not installed.\"\r\n}\r\n",
+          "SetScript": "$webpicmdexe = \"$env:ProgramFiles\\Microsoft\\Web Platform Installer\\WebPICmd.exe\"\r\n$webpicmdargs = @(\"/Install\", \"/Products:WDeploy\", \"/AcceptEula\", \"/SuppressReboot\", \"/Log:$env:BrewmasterDir\\Logs\\WebDeploy-Install.log\")\r\nWrite-Verbose \"Installing WebDeploy V3 ($webpicmdexe $webpicmdargs)\" -Verbose\r\nStart-Process -FilePath $webpicmdexe -ArgumentList $webpicmdargs -Wait\r\nif (!(Test-Path -LiteralPath \"$env:ProgramFiles\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe\" -PathType Leaf))\r\n{\r\n    Throw \"$env:ProgramFiles\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe was not installed.\"\r\n}\r\n",
           "TestScript": "if (Test-Path -LiteralPath \"$env:ProgramFiles\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe\" -PathType Leaf)\r\n{\r\n    Write-Verbose \"$env:ProgramFiles\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe already exists.\" -Verbose\r\n    return $true\r\n}\r\nreturn $false\r\n",
           "Type": "Script",
           "ImportModule": null,
