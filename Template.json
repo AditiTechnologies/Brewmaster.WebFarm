@@ -212,23 +212,6 @@
       "Name": "InstallWebFarm",
       "Resources": [
         {
-          "Type": "Package",
-          "ImportModule": null,
-          "ImportTypeName": null,
-          "Name": "InstallWebPI",
-          "Args": {
-            "Credential": "vmadmin",
-            "Name": "Microsoft Web Platform Installer 4.6",
-            "ProductId": "16C7D2AD-20CA-491E-80BC-8607A9AACED9",
-            "Path": "http://download.microsoft.com/download/7/0/4/704CEB4C-9F42-4962-A2B0-5C84B0682C7A/WebPlatformInstaller_amd64_en-US.msi",
-            "LogPath": "%BrewmasterDir%\\Logs\\WebPlatformInstaller_amd64_en-US.log",
-            "Ensure": "Present"
-          },
-          "Nodes": [],
-          "Requires": [],
-          "Description": null
-        },
-        {
           "Type": "WindowsFeature",
           "ImportModule": null,
           "ImportTypeName": null,
@@ -294,21 +277,21 @@
           ],
           "Description": null
         },
-        {
-          "Credential": "vmadmin",
-          "GetScript": "return @{ Installed = Test-Path -LiteralPath \"$env:ProgramFiles\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe\" -PathType Leaf }\r\n",
-          "SetScript": "$webpicmdexe = \"$env:ProgramFiles\\Microsoft\\Web Platform Installer\\WebPICmd.exe\"\r\n$webpicmdargs = @(\"/Install\", \"/Products:WDeploy\", \"/AcceptEula\", \"/SuppressReboot\", \"/Log:$env:BrewmasterDir\\Logs\\WebDeploy-Install.log\")\r\nWrite-Verbose \"Installing WebDeploy V3 ($webpicmdexe $webpicmdargs)\" -Verbose\r\nStart-Process -FilePath $webpicmdexe -ArgumentList $webpicmdargs -Wait\r\nif (!(Test-Path -LiteralPath \"$env:ProgramFiles\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe\" -PathType Leaf))\r\n{\r\n    Throw \"$env:ProgramFiles\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe was not installed.\"\r\n}\r\n",
-          "TestScript": "if (Test-Path -LiteralPath \"$env:ProgramFiles\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe\" -PathType Leaf)\r\n{\r\n    Write-Verbose \"$env:ProgramFiles\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe already exists.\" -Verbose\r\n    return $true\r\n}\r\nreturn $false\r\n",
-          "Type": "Script",
+		{
+          "Type": "Package",
           "ImportModule": null,
           "ImportTypeName": null,
           "Name": "InstallWebDeploy",
-          "Args": {},
+          "Args": {
+            "Credential": "vmadmin",
+            "Name": "Microsoft Web Deploy 3.5",
+            "ProductId": "1A81DA24-AF0B-4406-970E-54400D6EC118",
+            "Path": "http://download.microsoft.com/download/D/4/4/D446D154-2232-49A1-9D64-F5A9429913A4/WebDeploy_amd64_en-US.msi",
+            "LogPath": "%BrewmasterDir%\\Logs\\Install-WebDeploy.log",
+            "Ensure": "Present"
+          },
           "Nodes": [],
-          "Requires": [
-            "[Service]StartWebManagementService",
-            "[Package]InstallWebPI"
-          ],
+          "Requires": [],
           "Description": null
         },
         {
