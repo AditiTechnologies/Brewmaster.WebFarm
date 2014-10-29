@@ -310,7 +310,7 @@
           },
           "Nodes": [],
           "Requires": [
-            "[Script]InstallWebDeploy"
+            "[Package]InstallWebDeploy"
           ],
           "Description": null
         }
