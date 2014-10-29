@@ -283,9 +283,7 @@
           "ImportTypeName": null,
           "Name": "InstallWebDeploy",
           "Args": {
-            "Credential": "vmadmin",
             "Name": "Microsoft Web Deploy 3.5",
-            "ProductId": "1A81DA24-AF0B-4406-970E-54400D6EC118",
             "Path": "http://download.microsoft.com/download/D/4/4/D446D154-2232-49A1-9D64-F5A9429913A4/WebDeploy_amd64_en-US.msi",
             "LogPath": "%BrewmasterDir%\\Logs\\Install-WebDeploy.log",
             "Ensure": "Present"
